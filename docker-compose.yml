@@ -12,6 +12,10 @@ services:
 
     ports:
       - 8888:8888 # Forward the exposed port 8888 on the container to port 8888 on the host machine
+    links:
+      - keycloak
+    networks:
+      - auth-network
 
   #Fron-end Angular Application
   assesmentfe:
@@ -38,6 +42,17 @@ services:
   keycloak:
     container_name: keycloak
     image: jboss/keycloak
+    command:
+      [
+        '-b',
+        '0.0.0.0',
+        '-Dkeycloak.migration.action=import',
+        '-Dkeycloak.migration.provider=dir',
+        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
+        '-Dkeycloak.migration.strategy=OVERWRITE_EXISTING',
+      ]
+    volumes:
+        - ./asssmentBE/realm-config:/opt/jboss/keycloak/realm-config
     ports:
       - "8050:8080"
     depends_on:
