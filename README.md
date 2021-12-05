@@ -15,7 +15,13 @@ in the directory you will find my config for the realm  assesementbe/realm-confi
 with the import functionality import the realm file and choose if rousource exist => Skip
 
 create 2 users and give them password  in credentials to use them after 
-in user page for each one assing them roles (role mapping):
+
+in user page for each one assing them roles (role mapping) you will find roles in the mamunassessmentbe client :
 the firs user Admin and manager role 
 the second one only manager
 
+#Open the application via this url : http://localhost:4200/
+
+#communication between frontend and backen is with websocket 
+
+#frontend is with angular and backend is with spring boot java
